@@ -367,8 +367,7 @@ Copy and Paste the Resulting Table Below (2 columns â€“ star rating and cou
 		| None          |  21.161417322834644 |       508 |
 		+---------------+---------------------+-----------+
 
-		The correlation seems still clear. The 'None' level that indicates 
-		the number of users that are not in the first level.
+		The correlation seems still clear. The 'None' level that indicates the number of users that are not in the first level.
 
 		-- Code table 2
 
@@ -461,18 +460,209 @@ Part 2: Inferences and Analysis
 
 1. Pick one city and category of your choice and group the businesses in that city or category by their overall star rating. Compare the businesses with 2-3 stars to the businesses with 4-5 stars and answer the following questions. Include your code.
 	
+	City: Phoenix          
+	Category: Restaurants
+
+
 i. Do the two groups you chose to analyze have a different distribution of hours?
 
+	There are only 8 Phoenix restaurants that have 2-3 and 4-5 stars, as shown below:
+
+		+---------+-------------+----------------------------------------+-----------+
+		| city    | category    | name                                   | Rating    |
+		+---------+-------------+----------------------------------------+-----------+
+		| Phoenix | Restaurants | McDonald's                             | 2-3 stars |
+		| Phoenix | Restaurants | Gallagher's                            | 2-3 stars |
+		| Phoenix | Restaurants | Bootleggers Modern American Smokehouse | 4-5 stars |
+		| Phoenix | Restaurants | Charlie D's Catfish & Chicken          | 4-5 stars |
+		| Phoenix | Restaurants | Matt's Big Breakfast                   | 4-5 stars |
+		+---------+-------------+----------------------------------------+-----------+
+
+		Now, the hours distribution for the 2-3 stars rated group is given below:
+
+		+------------------------+----------------------+-----------+
+		| Restaurants in Phoenix | hours                | Rating    |
+		+------------------------+----------------------+-----------+
+		| McDonald's             | Monday|5:00-23:00    | 2-3 stars |
+		| McDonald's             | Tuesday|5:00-23:00   | 2-3 stars |
+		| McDonald's             | Friday|5:00-0:00     | 2-3 stars |
+		| McDonald's             | Wednesday|5:00-23:00 | 2-3 stars |
+		| McDonald's             | Thursday|5:00-23:00  | 2-3 stars |
+		| McDonald's             | Sunday|5:00-23:00    | 2-3 stars |
+		| McDonald's             | Saturday|5:00-0:00   | 2-3 stars |
+		| Gallagher's            | Monday|11:00-0:00    | 2-3 stars |
+		| Gallagher's            | Tuesday|11:00-0:00   | 2-3 stars |
+		| Gallagher's            | Friday|11:00-2:00    | 2-3 stars |
+		| Gallagher's            | Wednesday|11:00-0:00 | 2-3 stars |
+		| Gallagher's            | Thursday|11:00-2:00  | 2-3 stars |
+		| Gallagher's            | Sunday|9:00-0:00     | 2-3 stars |
+		| Gallagher's            | Saturday|9:00-2:00   | 2-3 stars |
+		+------------------------+----------------------+-----------+
+
+		And for the 4-5 stars rated group:
+
+		+----------------------------------------+-----------------------+-----------+
+		| Restaurants in Phoenix                 | hours                 | Rating    |
+		+----------------------------------------+-----------------------+-----------+
+		| Bootleggers Modern American Smokehouse | Monday|11:00-22:00    | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Tuesday|11:00-22:00   | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Friday|11:00-22:00    | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Wednesday|11:00-22:00 | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Thursday|11:00-22:00  | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Sunday|11:00-22:00    | 4-5 stars |
+		| Bootleggers Modern American Smokehouse | Saturday|11:00-22:00  | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Monday|11:00-18:00    | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Tuesday|11:00-18:00   | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Friday|11:00-18:00    | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Wednesday|11:00-18:00 | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Thursday|11:00-18:00  | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Sunday|13:00-16:00    | 4-5 stars |
+		| Charlie D's Catfish & Chicken          | Saturday|11:00-18:00  | 4-5 stars |
+		+----------------------------------------+-----------------------+-----------+
+
+		ANSWER: High-rated businesses tend to open later than low-rated ones and close earlier during the day.
 
 ii. Do the two groups you chose to analyze have a different number of reviews?
-         
+
+		+-----------+--------------------+
+		| Rating    |        ReviewsMean |
+		+-----------+--------------------+
+		| 2-3 stars |               34.0 |
+		| 4-5 stars | 208.66666666666666 |
+		+-----------+--------------------+
+		
+
+	It seems 4-5 stars rated group tend to recieve more reviews than 2-3 stars rated group.		
          
 iii. Are you able to infer anything from the location data provided between these two groups? Explain.
 
+		+-----------+----------------------------------------+--------------+---------------------+----------+-----------+-------------+
+		| Rating    | name                                   | neighborhood | address             | latitude | longitude | postal_code |
+		+-----------+----------------------------------------+--------------+---------------------+----------+-----------+-------------+
+		| 2-3 stars | McDonald's                             |              | 1850 S 7th St       |  33.4297 |  -112.066 | 85004       |
+		| 2-3 stars | Gallagher's                            |              | 751 E Union Hls Dr  |  33.6536 |  -112.064 | 85024       |
+		| 4-5 stars | Bootleggers Modern American Smokehouse |              | 3375 E Shea Blvd    |  33.5818 |  -112.008 | 85028       |
+		| 4-5 stars | Charlie D's Catfish & Chicken          |              | 1153 E Jefferson St |  33.4468 |  -112.057 | 85034       |
+		| 4-5 stars | Matt's Big Breakfast                   |              | 3118 E Camelback Rd |   33.511 |  -112.015 | 85016       |
+		+-----------+----------------------------------------+--------------+---------------------+----------+-----------+-------------+
+
+	There is nothing to infer here. Neighborhood values are empty. Deeper analysis is needed to infer meaningful insights about the relationship between location and business ratings.
+
+
+
+
 SQL code used for analysis:
 
-		
-		
+	
+	
+	-- QUESTION i. 1st table:
+
+	SELECT b.city, c.category, b.name,
+		-- Definig the starts rating levels
+		CASE
+			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
+			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
+		END AS Rating
+
+	-- Joining business and category tables
+	FROM business b INNER JOIN category c ON b.id = c.business_id
+
+	-- Filtering and sorting
+	WHERE Rating IS NOT NULL AND b.city = 'Phoenix' AND c.category = 'Restaurants'  -- NULL values come from the CASE statement for b.stars that is neither 2–3 nor 4–5 stars.
+	ORDER BY Rating;
+			
+			
+
+	
+	-- QUESTION i. 2nd table: 
+
+	SELECT b.name AS 'Restaurants in Phoenix', h.hours,
+		-- Definig the starts rating levels
+		CASE
+			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
+			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
+		END AS Rating
+
+	-- Joining the business, category and hours tables
+	FROM (business b INNER JOIN category c) INNER JOIN hours h
+	ON b.id = c.business_id AND b.id = h.business_id
+
+	-- Filtering and sorting
+	WHERE Rating IS NOT NULL AND c.category = 'Restaurants' AND 
+		b.city = 'Phoenix' AND Rating = '2-3 stars';
+
+
+
+	
+	-- QUESTION i. 3rd table:
+
+	SELECT b.name AS 'Restaurants in Phoenix', h.hours,
+		-- Definig the starts rating levels
+		CASE
+			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
+			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
+		END AS Rating
+
+	-- Joining the business, category and hours tables
+	FROM (business b INNER JOIN category c) INNER JOIN hours h
+	ON b.id = c.business_id AND b.id = h.business_id
+
+	-- Filtering and sorting
+	WHERE Rating IS NOT NULL AND c.category = 'Restaurants' AND 
+		b.city = 'Phoenix' AND Rating = '4-5 stars';	
+
+
+	
+	
+	-- QUESTION ii:
+
+	SELECT  
+    -- Definig the starts rating levels
+    CASE
+        WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
+        WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
+    END AS Rating, 
+
+	-- Calculatin the mean of the reviews number	
+    AVG(b.review_count) AS ReviewsMean
+
+	-- Joining the business and category tables
+	FROM business b INNER JOIN category c ON b.id = c.business_id 
+
+	-- Filtering and sorting
+	WHERE Rating IS NOT NULL AND c.category = 'Restaurants' AND 
+		b.city = 'Phoenix'
+
+		-- Doing it for each rating group
+        GROUP BY Rating ;
+
+
+
+
+	-- QUESTION iii:
+
+	SELECT 
+		-- Definig the starts rating levels
+		CASE
+			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
+			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
+		END AS Rating, 
+
+        b.name,
+        b.neighborhood,
+        b.address,
+        b.latitude,
+        b.longitude,
+        b.postal_code
+
+	-- Joining business and category tables
+	FROM business b INNER JOIN category c ON b.id = c.business_id
+
+	-- Filtering and sorting
+	WHERE Rating IS NOT NULL AND b.city = 'Phoenix' AND c.category = 'Restaurants'
+	ORDER BY Rating;
+
+
 2. Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer.
 		
 i. Difference 1:
@@ -483,6 +673,7 @@ ii. Difference 2:
          
          
 SQL code used for analysis:
+
 
 	
 	
