@@ -665,16 +665,32 @@ SQL code used for analysis:
 
 2. Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer.
 		
+		+-----------+----------------+--------------------+
+		| Condition | Num_Businesses |       Reviews_Mean |
+		+-----------+----------------+--------------------+
+		| Close     |           1520 | 23.198026315789473 |
+		| Open      |           8480 | 31.757075471698112 |
+		+-----------+----------------+--------------------+
+
 i. Difference 1:
+	
+	There are more businesses that are open (8480) than businesses that are closed (1520).
          
          
 ii. Difference 2:
-         
+    
+	On average, closed businesses received more reviews than open businesses.
          
          
 SQL code used for analysis:
-
-
+		
+		SELECT 
+		CASE WHEN is_open = 1 THEN 'Open' ELSE 'Close' END AS Condition, 
+		COUNT(name) AS 'Num_Businesses', 
+		AVG(review_count) AS Reviews_Mean
+		FROM business 
+		WHERE name IS NOT NULL
+		GROUP BY is_open; 
 	
 	
 3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.
