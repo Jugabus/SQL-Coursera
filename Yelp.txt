@@ -558,7 +558,7 @@ SQL code used for analysis:
 	-- QUESTION i. 1st table:
 
 	SELECT b.city, c.category, b.name,
-		-- Definig the starts rating levels
+		-- Definig the stars rating levels
 		CASE
 			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
 			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
@@ -577,7 +577,7 @@ SQL code used for analysis:
 	-- QUESTION i. 2nd table: 
 
 	SELECT b.name AS 'Restaurants in Phoenix', h.hours,
-		-- Definig the starts rating levels
+		-- Definig the stars rating levels
 		CASE
 			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
 			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
@@ -617,7 +617,7 @@ SQL code used for analysis:
 	-- QUESTION ii:
 
 	SELECT  
-    -- Definig the starts rating levels
+    -- Definig the stars rating levels
     CASE
         WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
         WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
@@ -642,7 +642,7 @@ SQL code used for analysis:
 	-- QUESTION iii:
 
 	SELECT 
-		-- Definig the starts rating levels
+		-- Definig the stars rating levels
 		CASE
 			WHEN b.stars BETWEEN 2 AND 3 THEN '2-3 stars'
 			WHEN b.stars BETWEEN 4 AND 5 THEN '4-5 stars'
@@ -674,12 +674,12 @@ SQL code used for analysis:
 
 i. Difference 1:
 	
-	There are more businesses that are open (8480) than businesses that are closed (1520).
+	There are more opened usinesses (8480) than businesses that are closed (1520).
          
          
 ii. Difference 2:
     
-	On average, closed businesses received more reviews than open businesses.
+	On average, opened businesses received more reviews than closed businesses.
          
          
 SQL code used for analysis:
@@ -698,12 +698,66 @@ SQL code used for analysis:
 Ideas for analysis include: Parsing out keywords and business attributes for sentiment analysis, clustering businesses to find commonalities or anomalies between them, predicting the overall star rating for a business, predicting the number of fans a user will have, and so on. These are just a few examples to get you started, so feel free to be creative and come up with your own problem you want to solve. Provide answers, in-line, to all of the following:
 	
 i. Indicate the type of analysis you chose to do:
-         
+        
+		Clustering businesses to find commonalities or anomalies between the businesses with best star rating or worst star rating.
          
 ii. Write 1-2 brief paragraphs on the type of data you will need for your analysis and why you chose that data:
                            
-                  
+		I 'll need specific data attributes to uncover meaningful patterns. Here are the types of data you should consider:
+	Business Attributes (star ratings, number of reviews, category), Location Data and Temporal Data. It could be possible 
+	to study any correlation between the features (linear regression, Pearson correlation, etc...)
+
+
+
 iii. Output of your finished dataset:
          
+
++------------------------+--------------------------------+-----------+-----------------------+------------+--------------------+----------+-----------+-------+--------------+
+| id                     | name                           |  category |                 hours | city       | neighborhood       | latitude | longitude | stars | review_count |
++------------------------+--------------------------------+-----------+-----------------------+------------+--------------------+----------+-----------+-------+--------------+
+| 2weQS-RnoOBhb1KsHKyoSQ | The Buffet                     |      None |                  None | Las Vegas  | The Strip          |  36.1269 |  -115.166 |   3.5 |         3873 |
+| 0W4lkclzZThpx3V65bVgig | Schwartz's                     |      None |                  None | Montréal   | Plateau-Mont-Royal |  45.5164 |  -73.5775 |   4.0 |         1757 |
+| 0FUtlsQrJI7LhqDPxLumEw | Joe's Farm Grill               |      None |                  None | Gilbert    |                    |  33.3217 |  -111.726 |   4.0 |         1549 |
+| 2iTsRqUsPGRH1li1WVRvKQ | Carson Kitchen                 |      None |                  None | Las Vegas  | Downtown           |  36.1679 |  -115.141 |   4.5 |         1410 |
+| --9e1ONYQuAa-CB_Rrw7Tw | Delmonico Steakhouse           |      None |                  None | Las Vegas  | The Strip          |  36.1232 |  -115.169 |   4.0 |         1389 |
+| -ed0Yc9on37RoIoG2ZgxBA | Le Thai                        |      None |                  None | Las Vegas  | Downtown           |  36.1688 |   -115.14 |   4.0 |         1252 |
+| 0NmTwqYEQiKErDv4a55obg | Scarpetta                      |      None |                  None | Las Vegas  | The Strip          |  36.1102 |  -115.174 |   4.0 |         1116 |
+| 0AQnRQw34IQW9-1gJkYnMA | Diablo's Cantina               |      None |                  None | Las Vegas  | The Strip          |  36.1041 |  -115.174 |   3.0 |         1084 |
+| -U7tvCtaraTQ9b0zBhpBMA | MGM Grand Buffet               |      None |                  None | Las Vegas  | The Strip          |  36.1021 |  -115.172 |   2.5 |          961 |
+| -6tvduBzjLI1ISfs3F_qTg | Joyride Taco House             |      None |                  None | Gilbert    |                    |   33.355 |   -111.79 |   4.0 |          902 |
+| 364hhL5st0LV16UcBHRJ3A | Yonaka Modern Japanese         |      None |                  None | Las Vegas  |                    |  36.1149 |   -115.21 |   4.5 |          864 |
+| -FLnsWAa4AGEW4NgE8Fqew | Breakfast Club- Scottsdale     |      None |                  None | Scottsdale |                    |     33.5 |  -111.926 |   3.5 |          823 |
+| 2sx52lDoiEtef7xgPCaoBw | VegeNation                     |      None |                  None | Las Vegas  | Downtown           |  36.1673 |  -115.139 |   4.5 |          821 |
+| 0_aeYE2-VbsZts_UpILgDw | Lazy Dog Restaurant & Bar      |      None |                  None | Las Vegas  | South Summerlin    |  36.1528 |  -115.334 |   4.0 |          786 |
+| 0ldxjei8v4q95fApIei3Lg | Lucille's Smokehouse Bar-B-Que |      None |                  None | Henderson  | Anthem             |  36.0206 |  -115.086 |   4.0 |          785 |
+| -av1lZI1JDY_RZN2eTMnWg | Salad King Restaurant          |      None |                  None | Toronto    | Downtown Core      |  43.6576 |  -79.3817 |   3.5 |          778 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |    Monday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |   Tuesday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |    Friday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles | Wednesday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |  Thursday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |    Sunday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            |   Noodles |  Saturday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            | Malaysian |    Monday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
+| 1ZnVfS-qP19upP_fwOhZsA | Big Wong Restaurant            | Malaysian |   Tuesday|10:00-23:00 | Las Vegas  | Chinatown          |  36.1267 |   -115.21 |   4.0 |          768 |
++------------------------+--------------------------------+-----------+-----------------------+------------+--------------------+----------+-----------+-------+--------------+
+(Output limit exceeded, 25 of 13096 total rows shown)
+
+
          
 iv. Provide the SQL code you used to create your final dataset:
+
+		SELECT
+		b.id,
+		b.name, 
+		c.category,
+		h.hours,
+		b.city, 
+		b.neighborhood,
+		b.latitude,
+		b. longitude,
+		b.stars,
+		b.review_count
+		FROM (business b LEFT JOIN category c ON b.id = c.business_id) 
+		LEFT JOIN hours h on b.id = h.business_id
+		ORDER BY b.review_count DESC;
