@@ -1,0 +1,2 @@
+El proyecto consistió en responder las preguntas que se encuentran el archivo txt. El conjunto de datos usado en el proyecto es un subconjunto de las empresas, reseñas y datos de usuarios de Yelp. Originalmente se creó para el Yelp Dataset Challenge,
+que es una oportunidad para que los estudiantes realicen investigaciones o análisis sobre los datos de Yelp y compartan sus descubrimientos. En el conjunto de datos más reciente encontrará información sobre empresas en 8 áreas metropolitanas de EE. UU. y Canadá.
